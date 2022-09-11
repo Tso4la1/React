@@ -1,6 +1,6 @@
 import Carousel  from "react-bootstrap/Carousel";
 import slider1 from './images/clip.jpg'
-const CarouselComponet = () => {
+const CarouselComponent = () => {
   
     return ( 
         <Carousel className="sliderHeight">
@@ -43,4 +43,4 @@ const CarouselComponet = () => {
      );
 }
  
-export default CarouselComponet;
+export default CarouselComponent;

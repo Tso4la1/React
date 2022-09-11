@@ -1,42 +1,34 @@
-// import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ContentColumn from './contentColumn';
-//import Card from 'react-bootstrap/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';         
+import PostComponent from './postsComponent';
+import loader from './logo.svg';
+import AlertComponent from './AlertComponent';
+import CarouselComponent from './carouselComponent';
 
+//import {useState, useEffect } from 'react';
+import useTsola from './useTsola';
+//import {useContext} from 'react'
+
+  
 const HomeComponent = () => {
-    // let styleHome = {
-    //     border: '1px solid black'
-    // };
-    // let name = "Bucky"
+const {data:posts, isPending, error} = useTsola ('')
+
+
+    
+    
+    
+
     return ( 
         <div>
+            <CarouselComponent />
+            {error && < AlertComponent props={error} />}
             
-                <Row  className='container-fluid mt-5'>
-                    <Col xs={12} md={4} lg={3}>
-                    <div className='p-3'>
-                        <ContentColumn></ContentColumn>
-                        </div>
-                </Col>
-                <Col xs={12} md={4} lg={3}>
-                    <div className='p-3'>
-                        <ContentColumn></ContentColumn>
-                        </div>
-                </Col>
-                <Col xs={12} md={4} lg={3}>
-                    <div className='p-3'>
-                        <ContentColumn></ContentColumn>
-                        </div>
-                </Col>
-                <Col xs={12} md={4} lg={3}>
-                    <div className='p-3'>
-                        <ContentColumn></ContentColumn>
-                        </div>
-                </Col>
-                </Row>
+            {isPending && <div> <img src={loader} width="200" alt='preloader' /></div>}
+            {posts && < PostComponent posts={posts}  />}
             
+
+
         </div>
      );
 }
  
-export default HomeComponent;
+export default HomeComponent;  

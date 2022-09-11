@@ -36,7 +36,7 @@ const FooterComponent = () => {
                         Address
                         </h3>
                         <p className='text-light'>
-                            So this is a samp;e of a Footer in React JS and it's fun to learn Coding in JSX
+                            So this is a sample of a Footer in React JS and it's fun to learn Coding in JSX
                         </p>
                         </div>
                 </Col>
