@@ -4,16 +4,40 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from './logo.svg';
 import Image from 'react-bootstrap/Image';
-import { LinkContainer } from 'react-router-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap'
 import { useContext } from 'react';
 import { ThemeContext } from '.';
-
+import Button from 'react-bootstrap/esm/Button';
+import api from './api';
+import swal from 'sweetalert';
+import { useHistory } from 'react-router-dom';
 
 const NavbarComponent = () => {
     const stylesNav = {
         marginLeft: '100px'
     }
     const [theme, toggleTheme] = useContext(ThemeContext)
+    const user = localStorage.getItem('username');
+    const history = useHistory();
+
+    const logOut = async () =>{
+        try {
+            const response = await api.post('/logout')
+              .then(res => {
+                // //console.log(res.data.validation_errors);
+                if (res.data.status === 200) {
+    
+                  localStorage.removeItem('token');
+                  localStorage.removeItem('username');
+                  swal("Success", res.data.message, "success")
+                  history.push('/')
+    
+                }
+              })
+          } catch (error) {
+            swal("Request not Performed", error.message, "error")
+          }
+    }
     return (
         <div>
             <Navbar expand="lg" style={{ background: theme.background, color: theme.foreground }}>
@@ -21,44 +45,66 @@ const NavbarComponent = () => {
                 <Container className='container-fluid' fluid>
                     <LinkContainer to="/">
                         <Navbar.Brand >
-                            <Image src={logo} className="navHead" />
-                            <p className="darkHeading navHead">Tsola's React</p>
+                        <p className="darkHeading navHead">{user} Welcome to</p>
+                            <p className="navHead">K@takana's Nature</p>
+                            
                         </Navbar.Brand>
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse id="basic-navbar-nav" >
                         <Nav className="me-auto" style={stylesNav}>
-                            <LinkContainer to="/">
-                                <Nav.Link style={{ color: theme.foreground }}><p style={{ color: theme.foreground }}> Home </p></Nav.Link>
+                            <LinkContainer to="/" >
+                                <Nav.Link ><p style={{ color: theme.foreground }}>Home</p></Nav.Link>
                             </LinkContainer>
+                                    
+                            {user ?
+                                <>
+                                    {/* requires authentication */}
 
-                            <LinkContainer to="/CreatePost">
-                                <Nav.Link style={{ color: theme.foreground }}><p style={{ color: theme.foreground }}>Add New Post</p></Nav.Link>
-                            </LinkContainer>
+                                    <LinkContainer to="/create">
+                                        <Nav.Link style={{ color: theme.foreground }}>
+                                            <p style={{ color: theme.foreground }}>Write a blog
+                                            </p></Nav.Link>
+                                    </LinkContainer>
+                                    <LinkContainer to="/tutorial">
+                                        <Nav.Link style={{ color: theme.foreground }}><p style={{ color: theme.foreground }}>
+                                            About Us
+                                        </p></Nav.Link>
+                                    </LinkContainer>
+                                    <LinkContainer to="/redux">
+                                        <Nav.Link style={{ color: theme.foreground }}><p style={{ color: theme.foreground }}>
+                                            Garden parks
+                                        </p></Nav.Link>
+                                    </LinkContainer>
+                                    <NavDropdown title={user} id="basic-nav-dropdown">
 
-                            <LinkContainer to="/reducer">
-                                <Nav.Link style={{ color: theme.foreground }}><p style={{ color: theme.foreground }}>Tutorials</p></Nav.Link>
-                            </LinkContainer>
+                                        <LinkContainer to="/login" className="btn btn-danger text-white">
+                                            <Button className="btn btn-danger text-white" onClick={logOut}>Log Out</Button>
+                                        </LinkContainer>
+                                        
+                                    </NavDropdown>
 
-                            <LinkContainer to="/redux">
-                                <Nav.Link style={{ color: theme.foreground }}><p style={{ color: theme.foreground }}>ReduxTutorials</p></Nav.Link>
-                            </LinkContainer>
+                                    {/* ends here for authentication */}
+                                </> :
+                                <>
+                                    <NavDropdown title="Account" id="basic-nav-dropdown">
+
+                                        <LinkContainer to="/login">
+                                            <NavDropdown.Item>Login</NavDropdown.Item>
+                                        </LinkContainer>
+                                        <NavDropdown.Divider />
+                                        <LinkContainer to="/register">
+                                            <NavDropdown.Item >
+                                                Register
+                                            </NavDropdown.Item>
+                                        </LinkContainer>
+                                    </NavDropdown>
+
+                                </>
 
 
-                            <NavDropdown title="Dashboard" id="basic-nav-dropdown">
+                            }
 
-                                <LinkContainer to="/login">
-                                    <NavDropdown.Item><p style={{ color: theme.foreground }}>Login</p></NavDropdown.Item>
-                                </LinkContainer>
-
-                                <NavDropdown.Divider />
-
-                                <LinkContainer to="/register">
-                                    <NavDropdown.Item>
-                                        Register
-                                    </NavDropdown.Item>
-                                </LinkContainer>
-                            </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

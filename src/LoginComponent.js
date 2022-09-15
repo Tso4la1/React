@@ -43,7 +43,7 @@ const Login = () => {
               localStorage.setItem('token', res.data.token);
               localStorage.setItem('username', res.data.user);
               swal("Success", res.data.message, "success")
-              history.push('/createPost')
+              history.push('/create')
 
             } else if (res.data.status === 401) {
               swal("Login Invalid", res.data.message, "error")

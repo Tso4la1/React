@@ -10,7 +10,7 @@
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  max-width: 100%;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -30,25 +30,25 @@
   
 }
 .content {
-  max-width: 600px;
+  max-width: 100%;
   margin: 40px auto;
   padding: 20px;
 }
-.darkHeading{
-  color:#333  
+.darkHeading {
+  color:#333;
 }
 .sliderText{
-  color: rgb(5, 84, 106)
+  color:#fffffddc
 }
-.navHead{
-  display: inline;
+.navHead {
+display: inline;
+padding: 5px;
 }
 .sliderHeight{
   max-height: 60vh;
-  
 }
 p{
-  margin-top: 30px
+  margin-top: 30px;
 }
 
 li{
@@ -56,9 +56,9 @@ li{
   margin: 10px;
   background-color: antiquewhite;
   list-style-type: none;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
 }
-li >small{
-  font-size: 15px; 
+li > small{
+  font-size: 15px;
 }
