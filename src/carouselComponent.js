@@ -10,7 +10,7 @@ const CarouselComponent = () => {
           <img
             className="d-block w-100"
             src={slider1}
-            alt="First"
+            alt="Firs"
           />
           <Carousel.Caption>
             <h3 className="sliderText"></h3>
