@@ -10,10 +10,10 @@ const CarouselComponent = () => {
           <img
             className="d-block w-100"
             src={slider1}
-            alt="Firs"
+            alt="fist"
           />
           <Carousel.Caption>
-            <h3 className="sliderText"></h3>
+            {/* <h3 className="sliderText"></h3> */}
             <p className="sliderText">If you're naturally yourself, you're beautiful. It's nice to just embrace the natural beauty within you.</p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -25,7 +25,7 @@ const CarouselComponent = () => {
           />
   
           <Carousel.Caption>
-            <h3 className="sliderText"></h3>
+            {/* <h3 className="sliderText"></h3> */}
             <p className="sliderText">Being natural is incredibly empowering for women because it's just who you are. </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -37,7 +37,7 @@ const CarouselComponent = () => {
           />
   
           <Carousel.Caption>
-            <h3 className="sliderText"></h3>
+            {/* <h3 className="sliderText"></h3> */}
             <p className="sliderText">
             You're embracing all the beautiful things about you from your head to your toes.
             </p>
