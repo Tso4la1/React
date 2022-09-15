@@ -27,6 +27,9 @@
 }
 .navbar a:hover {
   color: darkslategray;
+  padding-right: 2px;
+  padding-left: 2px;
+  width: 50%;
   
 }
 .content {

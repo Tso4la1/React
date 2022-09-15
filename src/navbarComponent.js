@@ -2,8 +2,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import logo from './logo.svg';
-import Image from 'react-bootstrap/Image';
+//import logo from './logo.svg';
+//import Image from 'react-bootstrap/Image';
 import { LinkContainer } from 'react-router-bootstrap'
 import { useContext } from 'react';
 import { ThemeContext } from '.';
@@ -93,7 +93,7 @@ const NavbarComponent = () => {
                                             <NavDropdown.Item>Login</NavDropdown.Item>
                                         </LinkContainer>
                                         <NavDropdown.Divider />
-                                        <LinkContainer to="/register">
+                                        <LinkContainer to="/register" className="navbar">
                                             <NavDropdown.Item >
                                                 Register
                                             </NavDropdown.Item>
