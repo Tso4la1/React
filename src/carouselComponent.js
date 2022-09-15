@@ -10,7 +10,7 @@ const CarouselComponent = () => {
           <img
             className="d-block w-100"
             src={slider1}
-            alt="First slide"
+            alt="First"
           />
           <Carousel.Caption>
             <h3 className="sliderText"></h3>
@@ -21,7 +21,7 @@ const CarouselComponent = () => {
           <img
             className="d-block w-100"
             src={slider2}
-            alt="Second slide"
+            alt="Second "
           />
   
           <Carousel.Caption>
